@@ -15,11 +15,11 @@ int main()
         int, 
         DoubleHashProber<std::string, MyStringHash >, 
         std::hash<std::string>, 
-        std::equal_to<std::string> > ht(0.7, dh);
+        std::equal_to<std::string> > ht(1, dh);
 
     // This is just arbitrary code. Change it to test whatever you like about your 
     // hash table implementation.
-    for(size_t i = 0; i < 10; i++){
+    for(size_t i = 0; i < 100; i++){
         std::stringstream ss;
         ss << "hi" << i;
         ht.insert({ss.str(), i});
