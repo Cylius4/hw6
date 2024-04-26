@@ -447,9 +447,11 @@ void HashTable<K, V, Prober, Hash, KEqual>::resize() {
     numInserts_ = 0;
     // Rehash all non-deleted items
     for (HASH_INDEX_T i = 0; i < oldSize; i++) {
-        if (oldTable[i] != nullptr && !oldTable[i]->deleted) {
-            insert(oldTable[i]->item);
-            delete oldTable[i];
+        if (oldTable[i] != nullptr) {
+            if (!oldTable[i]->deleted) {
+                insert(oldTable[i]->item);
+                delete oldTable[i];
+            } else delete oldTable[i];
         }
     }
 }
